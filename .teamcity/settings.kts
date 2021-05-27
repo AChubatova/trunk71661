@@ -43,7 +43,7 @@ object ResharperDuplicates : BuildType({
     steps {
         step {
             type = "dotnet-tools-dupfinder"
-            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "false")
             param("dotnet-tools-dupfinder.hashing.discard_fields_name", "true")
             param("dotnet-tools-dupfinder.hashing.discard_types", "true")
             param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
