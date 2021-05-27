@@ -42,12 +42,20 @@ object ResharperDuplicates : BuildType({
 
     steps {
         step {
-            type = "dotnet-tools-dupfinder"
-            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "false")
-            param("dotnet-tools-dupfinder.hashing.discard_fields_name", "true")
-            param("dotnet-tools-dupfinder.hashing.discard_types", "true")
-            param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
-            param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
+           name = "Resharper - Duplicates"
+
+           type = "dotnet-tools-dupfinder"
+
+           param("dotnet-tools-dupfinder.exclude_files", "**/*.Designer.cs\nDatabase/**\n**UnitTests**\n**/AssemblyInfo.cs\nEnergyWorkbench/Examples/**\nEnergyWorkbench/Tests/**\n**/ScipApi.*.cs\nExcelTools/Sandbox/**\n**/LpSolveApi.cs\n**/*.generated.cs")
+
+           param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "false")
+
+           param("dotnet-tools-dupfinder.hashing.discard_fields_name", "false")
+
+           param("dotnet-tools-dupfinder.hashing.discard_types", "true")
+
+           param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
+
         }
         script {
             scriptContent = "ping 127.0.0.1 -n 60 > nul"
