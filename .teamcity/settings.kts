@@ -42,7 +42,7 @@ object B : BuildType({
             name = "Resharper - Duplicates"
             type = "dotnet-tools-dupfinder"
             param("dotnet-tools-dupfinder.discard_cost", "60")
-            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "false")
             param("dotnet-tools-dupfinder.hashing.discard_fields_name", "false")
             param("dotnet-tools-dupfinder.exclude_files", """
                 **/*.Designer.cs
