@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.BuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
@@ -40,6 +41,12 @@ changeBuildType(RelativeId("B")) {
         }
     }
     steps {
+        update<BuildStep>(0) {
+            clearConditions()
+            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_fields_name", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_types", "true")
+        }
         update<ScriptBuildStep>(1) {
             clearConditions()
             scriptContent = "ping -n 30 localhost > NUL"
