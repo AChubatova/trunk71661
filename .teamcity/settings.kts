@@ -69,6 +69,10 @@ object ResharperDuplicates : BuildType({
         script {
             scriptContent = "ping 127.0.0.1 -n 60 > nul"
         }
+        step {
+            type = "dotnet-tools-dupfinder"
+            param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
+        }
     }
 })
 
