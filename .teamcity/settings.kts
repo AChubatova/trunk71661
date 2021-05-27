@@ -48,8 +48,8 @@ object ResharperDuplicates : BuildType({
         step {
             name = "Resharper - Duplicates"
             type = "dotnet-tools-dupfinder"
-            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "false")
-            param("dotnet-tools-dupfinder.hashing.discard_fields_name", "false")
+            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_fields_name", "true")
             param("dotnet-tools-dupfinder.exclude_files", """
                 **/*.Designer.cs
                 Database/**
@@ -62,8 +62,8 @@ object ResharperDuplicates : BuildType({
                 **/LpSolveApi.cs
                 **/*.generated.cs
             """.trimIndent())
-            param("dotnet-tools-dupfinder.hashing.discard_types", "false")
-            param("dotnet-tools-dupfinder.hashing.normalize_types", "false")
+            param("dotnet-tools-dupfinder.hashing.discard_types", "true")
+            param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
         }
         script {
