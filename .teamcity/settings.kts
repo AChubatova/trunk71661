@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 /*
@@ -47,6 +48,9 @@ object ResharperDuplicates : BuildType({
             param("dotnet-tools-dupfinder.hashing.discard_types", "true")
             param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
+        }
+        script {
+            scriptContent = "ping 127.0.0.1 -n 60 > nul"
         }
     }
 })
