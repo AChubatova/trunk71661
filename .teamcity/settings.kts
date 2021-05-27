@@ -62,8 +62,8 @@ object ResharperDuplicates : BuildType({
                 **/LpSolveApi.cs
                 **/*.generated.cs
             """.trimIndent())
-            param("dotnet-tools-dupfinder.hashing.discard_types", "true")
-            param("dotnet-tools-dupfinder.hashing.normalize_types", "true")
+            param("dotnet-tools-dupfinder.hashing.discard_types", "false")
+            param("dotnet-tools-dupfinder.hashing.normalize_types", "false")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
         }
         script {
