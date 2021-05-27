@@ -71,6 +71,7 @@ object ResharperDuplicates : BuildType({
         }
         step {
             type = "dotnet-tools-dupfinder"
+            param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
         }
     }
