@@ -39,6 +39,7 @@ changeBuildType(RelativeId("ResharperDuplicates")) {
     steps {
         update<BuildStep>(0) {
             clearConditions()
+            param("dotnet-tools-dupfinder.discard_cost", "60")
             param("dotnet-tools-dupfinder.hashing.discard_local_variables_name", "true")
             param("dotnet-tools-dupfinder.hashing.discard_fields_name", "true")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
