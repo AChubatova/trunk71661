@@ -24,6 +24,13 @@ create(DslContext.projectId, BuildType({
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
         }
+        step {
+            type = "dotnet-tools-inspectcode"
+            param("dotnet-tools-inspectcode.customCmdArgs", "--exclude=**/*.ts")
+            param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
+            param("jetbrains.resharper-clt.platform", "x64")
+            param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
+        }
     }
 }))
 
