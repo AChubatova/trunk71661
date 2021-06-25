@@ -21,8 +21,8 @@ create(DslContext.projectId, BuildType({
         step {
             type = "dotnet-tools-inspectcode"
             param("dotnet-tools-inspectcode.customCmdArgs", """
-                "--no-swea"
-                "-o=cs-report.xml"
+                --no-swea
+                -o=cs-report.xml
             """.trimIndent())
             param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
             param("jetbrains.resharper-clt.platform", "x64")
