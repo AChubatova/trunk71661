@@ -20,10 +20,7 @@ create(DslContext.projectId, BuildType({
     steps {
         step {
             type = "dotnet-tools-inspectcode"
-            param("dotnet-tools-inspectcode.customCmdArgs", """
-                --no-swea
-                -o=cs-report.xml
-            """.trimIndent())
+            param("dotnet-tools-inspectcode.customCmdArgs", "-o=cs-report.xml")
             param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
