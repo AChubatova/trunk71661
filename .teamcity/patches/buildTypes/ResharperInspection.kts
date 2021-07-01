@@ -22,7 +22,7 @@ create(DslContext.projectId, BuildType({
             type = "dotnet-tools-inspectcode"
             param("dotnet-tools-inspectcode.customCmdArgs", """
                 --exclude=**/Asio*
-                -o=reports/cs-report.xml 
+                -o=report s1/repo rt2/cs-report.xml 
                 --no-swea
             """.trimIndent())
             param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
