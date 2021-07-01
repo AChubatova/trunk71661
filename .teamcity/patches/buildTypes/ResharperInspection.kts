@@ -29,6 +29,7 @@ create(DslContext.projectId, BuildType({
                 --no-swea
             """.trimIndent())
             param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
+            param("dotnet-tools-inspectcodeCustomSettingsProfile", "settings profile/file.config")
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
         }
