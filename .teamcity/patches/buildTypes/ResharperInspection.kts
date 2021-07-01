@@ -21,12 +21,13 @@ create(DslContext.projectId, BuildType({
         step {
             type = "dotnet-tools-inspectcode"
             param("dotnet-tools-inspectcode.customCmdArgs", """
-                --exclude=**/Asio*
                 --toolset-path=C:\Program Files\dotnet\sdk\5.0.101\msbuild.dll
+                
                 -o=report s1/repo rt2/cs-report.xml
+                --exclude=**/Asio*
+                
                 --no-swea
             """.trimIndent())
-            param("dotnet-tools-inspectcode.debug", "true")
             param("dotnet-tools-inspectcode.solution", "VisualStudioToolSetBug.sln")
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
