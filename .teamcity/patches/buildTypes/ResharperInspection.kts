@@ -19,6 +19,12 @@ create(DslContext.projectId, BuildType({
     }
 
     steps {
+        script {
+            scriptContent = """
+                mkdir "settings profile"
+                xcopy "C:\file name.config" "%system.teamcity.build.workingDir%\settings profile"
+            """.trimIndent()
+        }
         step {
             type = "dotnet-tools-inspectcode"
             param("dotnet-tools-inspectcode.customCmdArgs", """
@@ -33,12 +39,6 @@ create(DslContext.projectId, BuildType({
             param("dotnet-tools-inspectcodeCustomSettingsProfile", "settings profile/file name.config")
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
-        }
-        script {
-            scriptContent = """
-                mkdir "settings profile"
-                xcopy "C:\file name.config" "%system.teamcity.build.workingDir%\settings profile"
-            """.trimIndent()
         }
     }
 }))
