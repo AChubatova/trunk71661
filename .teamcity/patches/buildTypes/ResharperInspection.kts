@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -32,6 +33,12 @@ create(DslContext.projectId, BuildType({
             param("dotnet-tools-inspectcodeCustomSettingsProfile", "settings profile/file name.config")
             param("jetbrains.resharper-clt.platform", "x64")
             param("jetbrains.resharper-clt.clt-path", "%teamcity.tool.jetbrains.resharper-clt.DEFAULT%")
+        }
+        script {
+            scriptContent = """
+                mkdir "settings profile"
+                xcopy "C:\file name.config" "%system.teamcity.build.workingDir%\settings profile"
+            """.trimIndent()
         }
     }
 }))
